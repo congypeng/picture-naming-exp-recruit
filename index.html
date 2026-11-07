@@ -187,11 +187,6 @@
             font-weight: 900;
             font-style: italic;
             margin-top: 5px;
-            transition: color 0.3s ease;
-        }
-        .reward-price span {
-            color: #e5a93d;
-            font-style: normal;
         }
 
         /* 聯絡資訊區塊 */
@@ -224,20 +219,13 @@
             text-decoration: underline;
         }
 
-        /* 裝飾圖示 (已移除箭頭) */
-        .icon-float { position: absolute; font-size: 2em; opacity: 0.8; z-index: 1;}
-        .icon-star { top: 20%; right: 5%; font-size: 1.5em; }
-        .icon-megaphone { bottom: 15%; right: 5%; font-size: 4em; }
-
         /* 行動裝置響應式優化 */
         @media (max-width: 768px) {
             .content-grid { grid-template-columns: 1fr; gap: 40px; }
             h1 { font-size: 2.3em; }
             .poster-canvas { padding: 25px 20px; }
-            .icon-float { display: none; }
-            .exp-btn { padding: 8px 15px; font-size: 1em; }
+            .exp-btn { padding: 8px 12px; font-size: 0.95em; }
             
-            /* 手機版標題自動換行對齊 */
             .cityu-logo-text {
                 flex-direction: column;
                 align-items: center;
@@ -256,10 +244,6 @@
             <button id="lang-toggle">English</button>
         </div>
 
-        <!-- 裝飾元素 -->
-        <div class="icon-float icon-star">✨</div>
-        <div class="icon-float icon-megaphone">📢</div>
-
         <!-- 共用標題區 -->
         <div class="header">
             <div class="cityu-logo-text">
@@ -268,15 +252,15 @@
             </div>
             <h1 id="main-title-zh">圖片命名實驗</h1>
             <h1 id="main-title-en" style="display: none; font-size: 2.8em;">Picture Naming Experiment</h1>
-            <div class="subtitle" id="subtitle-zh">📝 參與者招募</div>
-            <div class="subtitle" id="subtitle-en" style="display: none;">📝 Participant Recruitment</div>
+            <div class="subtitle" id="subtitle-zh">參與者招募</div>
+            <div class="subtitle" id="subtitle-en" style="display: none;">Participant Recruitment</div>
         </div>
 
-        <!-- 實驗切換器 -->
+        <!-- 實驗切換器 (括號內改為時長) -->
         <div class="exp-selector-container">
             <div class="exp-selector">
-                <button class="exp-btn active" data-exp="A" id="btn-exp-a">選項 A (HKD 150)</button>
-                <button class="exp-btn" data-exp="B" id="btn-exp-b">選項 B (HKD 200)</button>
+                <button class="exp-btn active" data-exp="A" id="btn-exp-a">選項 A (1-1.5小時)</button>
+                <button class="exp-btn" data-exp="B" id="btn-exp-b">選項 B (1.5-2小時)</button>
             </div>
         </div>
 
@@ -296,9 +280,9 @@
                 <div>
                     <div class="section-title bg-green">參與內容</div>
                     <ul>
-                        <li>電腦圖片命名任務 💻<br>（結合腦電波 EEG 記錄 🧠）</li>
-                        <li id="dur-text-zh">包含 1 個約 1-1.5 小時的實驗時段 ⏱️</li>
-                        <li>於香港城市大學校園內進行 🏫</li>
+                        <li>電腦圖片命名任務<br>（結合腦電波 EEG 記錄）</li>
+                        <li id="dur-text-zh">包含 1 個約 1-1.5 小時的實驗時段</li>
+                        <li>於香港城市大學校園內進行</li>
                     </ul>
                 </div>
             </div>
@@ -306,15 +290,15 @@
             <div class="reward-section">
                 <div class="section-title bg-blue">報酬與補償</div>
                 <p class="reward-text">完成實驗可獲贈</p>
-                <div class="reward-price">HKD <span id="reward-amount-zh" style="color: #314259;">150</span> <span>💰</span></div>
+                <div class="reward-price">HKD <span id="reward-amount-zh" style="color: #314259;">150</span></div>
             </div>
 
             <div class="contact-info">
                 <div class="section-title bg-dark">報名及查詢</div>
                 <div style="margin-top: 15px;">
                     <p>如有任何查詢或報名，請電郵至</p>
-                    <p>✉️ <a href="#" class="email-link" id="email-link-zh">congypeng3-c@my.cityu.edu.hk</a></p>
-                    <p>或致電/WhatsApp 📱 <strong>61607852</strong> 聯絡實驗團隊。</p>
+                    <p><a href="#" class="email-link" id="email-link-zh">congypeng3-c@my.cityu.edu.hk</a></p>
+                    <p>或致電/WhatsApp <strong>61607852</strong> 聯絡實驗團隊。</p>
                 </div>
             </div>
         </div>
@@ -335,9 +319,9 @@
                 <div>
                     <div class="section-title bg-green">Study Details</div>
                     <ul>
-                        <li>Computerized picture naming task 💻<br>(with EEG recording 🧠)</li>
-                        <li id="dur-text-en">One session approx. 1-1.5 hours ⏱️</li>
-                        <li>Conducted on the CityUHK campus 🏫</li>
+                        <li>Computerized picture naming task<br>(with EEG recording)</li>
+                        <li id="dur-text-en">One session approx. 1-1.5 hours</li>
+                        <li>Conducted on the CityUHK campus</li>
                     </ul>
                 </div>
             </div>
@@ -345,15 +329,15 @@
             <div class="reward-section">
                 <div class="section-title bg-blue">Compensation</div>
                 <p class="reward-text">Upon completion, you will receive</p>
-                <div class="reward-price">HKD <span id="reward-amount-en" style="color: #314259;">150</span> <span>💰</span></div>
+                <div class="reward-price">HKD <span id="reward-amount-en" style="color: #314259;">150</span></div>
             </div>
 
             <div class="contact-info">
                 <div class="section-title bg-dark">Contact & Registration</div>
                 <div style="margin-top: 15px;">
                     <p>For inquiries or registration, please email</p>
-                    <p>✉️ <a href="#" class="email-link" id="email-link-en">congypeng3-c@my.cityu.edu.hk</a></p>
-                    <p>or call/WhatsApp 📱 <strong>61607852</strong>.</p>
+                    <p><a href="#" class="email-link" id="email-link-en">congypeng3-c@my.cityu.edu.hk</a></p>
+                    <p>or call/WhatsApp <strong>61607852</strong>.</p>
                 </div>
             </div>
         </div>
@@ -368,18 +352,22 @@
 
             const expData = {
                 A: {
-                    durZh: "包含 1 個約 1-1.5 小時的實驗時段 ⏱️",
-                    durEn: "One session approx. 1-1.5 hours ⏱️",
+                    durZh: "包含 1 個約 1-1.5 小時的實驗時段",
+                    durEn: "One session approx. 1-1.5 hours",
                     reward: "150",
-                    subjectZh: "報名圖片命名實驗（選項A：1-1.5小時）",
-                    subjectEn: "Registration for Picture Naming Exp (Option A)"
+                    subjectZh: "報名參與圖片命名實驗（選項A：1-1.5小時）",
+                    subjectEn: "Registration for Picture Naming Experiment (Option A)",
+                    bodyZh: "您好：\n\n我想報名參加貴團隊的圖片命名實驗（選項A：1-1.5小時，報酬 HKD 150）。\n\n以下是我的基本資料與有空的時間段：\n- 姓名：\n- 電話：\n- 廣東話是否為母語（是/否）：\n- 年齡：\n- 有空的時間段（請列出日期與時間，例如：11月10日下午 2:00 - 5:00）：\n\n期待您的回覆，謝謝！",
+                    bodyEn: "Hello,\n\nI would like to sign up for the Picture Naming Experiment (Option A: 1-1.5 hours, Reward HKD 150).\n\nHere is my information and available time slots:\n- Name:\n- Phone:\n- Native Cantonese speaker (Yes/No):\n- Age:\n- Available time slots (e.g., Nov 10, 2:00 PM - 5:00 PM):\n\nLooking forward to your reply. Thank you!"
                 },
                 B: {
-                    durZh: "包含 1 個約 1.5-2 小時的實驗時段 ⏱️",
-                    durEn: "One session approx. 1.5-2 hours ⏱️",
+                    durZh: "包含 1 個約 1.5-2 小時的實驗時段",
+                    durEn: "One session approx. 1.5-2 hours",
                     reward: "200",
-                    subjectZh: "報名圖片命名實驗（選項B：1.5-2小時）",
-                    subjectEn: "Registration for Picture Naming Exp (Option B)"
+                    subjectZh: "報名參與圖片命名實驗（選項B：1.5-2小時）",
+                    subjectEn: "Registration for Picture Naming Experiment (Option B)",
+                    bodyZh: "您好：\n\n我想報名參加貴團隊的圖片命名實驗（選項B：1.5-2小時，報酬 HKD 200）。\n\n以下是我的基本資料與有空的時間段：\n- 姓名：\n- 電話：\n- 廣東話是否為母語（是/否）：\n- 年齡：\n- 有空的時間段（請列出日期與時間，例如：11月10日下午 2:00 - 5:00）：\n\n期待您的回覆，謝謝！",
+                    bodyEn: "Hello,\n\nI would like to sign up for the Picture Naming Experiment (Option B: 1.5-2 hours, Reward HKD 200).\n\nHere is my information and available time slots:\n- Name:\n- Phone:\n- Native Cantonese speaker (Yes/No):\n- Age:\n- Available time slots (e.g., Nov 10, 2:00 PM - 5:00 PM):\n\nLooking forward to your reply. Thank you!"
                 }
             };
 
@@ -398,17 +386,18 @@
                 document.getElementById('reward-amount-zh').innerText = data.reward;
                 document.getElementById('reward-amount-en').innerText = data.reward;
 
-                const mailtoZh = `mailto:${emailAddress}?subject=${encodeURIComponent(data.subjectZh)}`;
-                const mailtoEn = `mailto:${emailAddress}?subject=${encodeURIComponent(data.subjectEn)}`;
+                const mailtoZh = `mailto:${emailAddress}?subject=${encodeURIComponent(data.subjectZh)}&body=${encodeURIComponent(data.bodyZh)}`;
+                const mailtoEn = `mailto:${emailAddress}?subject=${encodeURIComponent(data.subjectEn)}&body=${encodeURIComponent(data.bodyEn)}`;
+                
                 document.getElementById('email-link-zh').href = mailtoZh;
                 document.getElementById('email-link-en').href = mailtoEn;
 
                 if (currentLang === 'zh') {
-                    btnExpA.innerText = "選項 A (HKD 150)";
-                    btnExpB.innerText = "選項 B (HKD 200)";
+                    btnExpA.innerText = "選項 A (1-1.5小時)";
+                    btnExpB.innerText = "選項 B (1.5-2小時)";
                 } else {
-                    btnExpA.innerText = "Option A (HKD 150)";
-                    btnExpB.innerText = "Option B (HKD 200)";
+                    btnExpA.innerText = "Option A (1-1.5h)";
+                    btnExpB.innerText = "Option B (1.5-2h)";
                 }
             }
 
