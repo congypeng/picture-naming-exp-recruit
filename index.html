@@ -8,31 +8,35 @@
         /* 基礎版面設定 - 還原海報米色背景 */
         body {
             font-family: "PingFang HK", "Microsoft JhengHei", -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #FCF6EF; /* 海報專屬米色 */
+            background-color: #FCF6EF;
             color: #1a1a1a;
             line-height: 1.6;
             margin: 0;
             padding: 20px;
             background-image: radial-gradient(#e8dfd5 1px, transparent 0);
-            background-size: 40px 40px; /* 淡淡的網點背景增加質感 */
+            background-size: 40px 40px;
         }
         
         .poster-canvas {
             max-width: 850px;
             margin: 0 auto;
             background-color: #FCF6EF;
-            padding: 40px 50px;
+            padding: 30px 50px 40px 50px;
             position: relative;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             border-radius: 15px;
         }
 
-        /* 語言切換按鈕 */
+        /* 語言切換按鈕區塊 */
+        .top-bar {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 10;
+        }
         #lang-toggle {
-            position: absolute;
-            top: 20px;
-            right: 30px;
             background-color: #8E1537;
             color: white;
             border: 2px solid #8E1537;
@@ -42,7 +46,6 @@
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s;
-            z-index: 10;
         }
         #lang-toggle:hover {
             background-color: white;
@@ -52,7 +55,7 @@
         /* 頂部標題區 */
         .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             position: relative;
         }
         .cityu-logo-text {
@@ -62,11 +65,12 @@
             margin-bottom: 10px;
             display: flex;
             justify-content: space-between;
+            align-items: flex-end;
             border-bottom: 2px solid #e0d5c1;
             padding-bottom: 10px;
         }
         h1 {
-            color: #314259; /* 海報的深藍灰色 */
+            color: #314259;
             font-size: 3.5em;
             font-weight: 900;
             margin: 20px 0 5px 0;
@@ -78,10 +82,40 @@
             font-size: 1.8em;
             font-weight: bold;
             display: inline-block;
-            margin-bottom: 20px;
         }
 
-        /* 區塊標題標籤 - 手繪描邊風格 */
+        /* 實驗選項切換器 */
+        .exp-selector-container {
+            text-align: center;
+            margin-bottom: 35px;
+            position: relative;
+            z-index: 2;
+        }
+        .exp-selector {
+            background: #e8dfd5;
+            display: inline-flex;
+            border-radius: 30px;
+            padding: 5px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .exp-btn {
+            background: transparent;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #7a736a;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .exp-btn.active {
+            background: #314259;
+            color: #fff;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        /* 區塊標題標籤 */
         .section-title {
             display: inline-block;
             padding: 5px 25px;
@@ -105,7 +139,6 @@
             position: relative;
         }
         
-        /* 列表樣式 */
         ul {
             list-style-type: none;
             padding-left: 0;
@@ -126,7 +159,6 @@
             color: #1a1a1a;
             font-weight: 900;
         }
-        /* 重點文字底線 */
         .highlight-text {
             border-bottom: 3px solid #1a1a1a;
             padding-bottom: 2px;
@@ -135,8 +167,13 @@
         /* 報酬區塊 */
         .reward-section {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 30px;
             position: relative;
+            background-color: rgba(107, 187, 192, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px dashed #6bbbc0;
+            transition: all 0.3s ease;
         }
         .reward-text {
             font-size: 1.4em;
@@ -150,9 +187,10 @@
             font-weight: 900;
             font-style: italic;
             margin-top: 5px;
+            transition: color 0.3s ease;
         }
         .reward-price span {
-            color: #e5a93d; /* 金幣顏色 */
+            color: #e5a93d;
             font-style: normal;
         }
 
@@ -186,17 +224,26 @@
             text-decoration: underline;
         }
 
-        /* 裝飾圖示 (Emoji 模擬) */
-        .icon-float { position: absolute; font-size: 2em; opacity: 0.8; }
+        /* 裝飾圖示 (已移除箭頭) */
+        .icon-float { position: absolute; font-size: 2em; opacity: 0.8; z-index: 1;}
         .icon-star { top: 20%; right: 5%; font-size: 1.5em; }
-        .icon-arrow { left: 45%; top: 40%; font-size: 2em; color: #314259; transform: rotate(30deg); }
-        .icon-megaphone { bottom: 20%; left: 5%; font-size: 4em; }
+        .icon-megaphone { bottom: 15%; right: 5%; font-size: 4em; }
 
+        /* 行動裝置響應式優化 */
         @media (max-width: 768px) {
             .content-grid { grid-template-columns: 1fr; gap: 40px; }
-            h1 { font-size: 2.5em; }
-            .poster-canvas { padding: 30px 20px; }
-            .icon-float { display: none; } /* 手機版隱藏裝飾避免擁擠 */
+            h1 { font-size: 2.3em; }
+            .poster-canvas { padding: 25px 20px; }
+            .icon-float { display: none; }
+            .exp-btn { padding: 8px 15px; font-size: 1em; }
+            
+            /* 手機版標題自動換行對齊 */
+            .cityu-logo-text {
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -204,24 +251,37 @@
 
     <div class="poster-canvas">
         
-        <button id="lang-toggle">English</button>
+        <!-- 頂部切換按鈕區 -->
+        <div class="top-bar">
+            <button id="lang-toggle">English</button>
+        </div>
 
         <!-- 裝飾元素 -->
         <div class="icon-float icon-star">✨</div>
-        <div class="icon-float icon-arrow">⤵</div>
         <div class="icon-float icon-megaphone">📢</div>
+
+        <!-- 共用標題區 -->
+        <div class="header">
+            <div class="cityu-logo-text">
+                <span>CityU 香港城市大學</span>
+                <span style="font-size: 0.8em; color: #666; font-weight: normal; padding-top: 5px;">Department of Linguistics and Translation</span>
+            </div>
+            <h1 id="main-title-zh">圖片命名實驗</h1>
+            <h1 id="main-title-en" style="display: none; font-size: 2.8em;">Picture Naming Experiment</h1>
+            <div class="subtitle" id="subtitle-zh">📝 參與者招募</div>
+            <div class="subtitle" id="subtitle-en" style="display: none;">📝 Participant Recruitment</div>
+        </div>
+
+        <!-- 實驗切換器 -->
+        <div class="exp-selector-container">
+            <div class="exp-selector">
+                <button class="exp-btn active" data-exp="A" id="btn-exp-a">選項 A (HKD 150)</button>
+                <button class="exp-btn" data-exp="B" id="btn-exp-b">選項 B (HKD 200)</button>
+            </div>
+        </div>
 
         <!-- ================= 中文版內容 ================= -->
         <div id="content-zh">
-            <div class="header">
-                <div class="cityu-logo-text">
-                    <span>CityU 香港城市大學</span>
-                    <span style="font-size: 0.8em; color: #666; font-weight: normal;">Department of Linguistics and Translation</span>
-                </div>
-                <h1>圖片命名實驗</h1>
-                <div class="subtitle">📝 參與者招募</div>
-            </div>
-
             <div class="content-grid">
                 <div>
                     <div class="section-title bg-green">招募對象</div>
@@ -237,7 +297,7 @@
                     <div class="section-title bg-green">參與內容</div>
                     <ul>
                         <li>電腦圖片命名任務 💻<br>（結合腦電波 EEG 記錄 🧠）</li>
-                        <li>包含 1 個約 1.5-2 小時的實驗時段 ⏱️</li>
+                        <li id="dur-text-zh">包含 1 個約 1-1.5 小時的實驗時段 ⏱️</li>
                         <li>於香港城市大學校園內進行 🏫</li>
                     </ul>
                 </div>
@@ -246,14 +306,14 @@
             <div class="reward-section">
                 <div class="section-title bg-blue">報酬與補償</div>
                 <p class="reward-text">完成實驗可獲贈</p>
-                <div class="reward-price">HKD 200 <span>💰</span></div>
+                <div class="reward-price">HKD <span id="reward-amount-zh" style="color: #314259;">150</span> <span>💰</span></div>
             </div>
 
             <div class="contact-info">
                 <div class="section-title bg-dark">報名及查詢</div>
                 <div style="margin-top: 15px;">
                     <p>如有任何查詢或報名，請電郵至</p>
-                    <p>✉️ <a href="mailto:congypeng3-c@my.cityu.edu.hk" class="email-link">congypeng3-c@my.cityu.edu.hk</a></p>
+                    <p>✉️ <a href="#" class="email-link" id="email-link-zh">congypeng3-c@my.cityu.edu.hk</a></p>
                     <p>或致電/WhatsApp 📱 <strong>61607852</strong> 聯絡實驗團隊。</p>
                 </div>
             </div>
@@ -261,15 +321,6 @@
 
         <!-- ================= 英文版內容 ================= -->
         <div id="content-en" style="display: none;">
-            <div class="header">
-                <div class="cityu-logo-text">
-                    <span>CityU</span>
-                    <span style="font-size: 0.8em; color: #666; font-weight: normal;">Department of Linguistics and Translation</span>
-                </div>
-                <h1>Picture Naming Experiment</h1>
-                <div class="subtitle">📝 Participant Recruitment</div>
-            </div>
-
             <div class="content-grid">
                 <div>
                     <div class="section-title bg-green">Eligibility</div>
@@ -285,7 +336,7 @@
                     <div class="section-title bg-green">Study Details</div>
                     <ul>
                         <li>Computerized picture naming task 💻<br>(with EEG recording 🧠)</li>
-                        <li>One session lasting approx. 1.5-2 hours ⏱️</li>
+                        <li id="dur-text-en">One session approx. 1-1.5 hours ⏱️</li>
                         <li>Conducted on the CityUHK campus 🏫</li>
                     </ul>
                 </div>
@@ -294,14 +345,14 @@
             <div class="reward-section">
                 <div class="section-title bg-blue">Compensation</div>
                 <p class="reward-text">Upon completion, you will receive</p>
-                <div class="reward-price">HKD 200 <span>💰</span></div>
+                <div class="reward-price">HKD <span id="reward-amount-en" style="color: #314259;">150</span> <span>💰</span></div>
             </div>
 
             <div class="contact-info">
                 <div class="section-title bg-dark">Contact & Registration</div>
                 <div style="margin-top: 15px;">
                     <p>For inquiries or registration, please email</p>
-                    <p>✉️ <a href="mailto:congypeng3-c@my.cityu.edu.hk" class="email-link">congypeng3-c@my.cityu.edu.hk</a></p>
+                    <p>✉️ <a href="#" class="email-link" id="email-link-en">congypeng3-c@my.cityu.edu.hk</a></p>
                     <p>or call/WhatsApp 📱 <strong>61607852</strong>.</p>
                 </div>
             </div>
@@ -312,45 +363,98 @@
     <!-- ================= 互動腳本 ================= -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const toggleBtn = document.getElementById('lang-toggle');
-            const contentZh = document.getElementById('content-zh');
-            const contentEn = document.getElementById('content-en');
             let currentLang = 'zh';
+            let currentExp = 'A'; 
 
-            // 語言切換
+            const expData = {
+                A: {
+                    durZh: "包含 1 個約 1-1.5 小時的實驗時段 ⏱️",
+                    durEn: "One session approx. 1-1.5 hours ⏱️",
+                    reward: "150",
+                    subjectZh: "報名圖片命名實驗（選項A：1-1.5小時）",
+                    subjectEn: "Registration for Picture Naming Exp (Option A)"
+                },
+                B: {
+                    durZh: "包含 1 個約 1.5-2 小時的實驗時段 ⏱️",
+                    durEn: "One session approx. 1.5-2 hours ⏱️",
+                    reward: "200",
+                    subjectZh: "報名圖片命名實驗（選項B：1.5-2小時）",
+                    subjectEn: "Registration for Picture Naming Exp (Option B)"
+                }
+            };
+
+            const emailAddress = "congypeng3-c@my.cityu.edu.hk";
+
+            const toggleBtn = document.getElementById('lang-toggle');
+            const btnExpA = document.getElementById('btn-exp-a');
+            const btnExpB = document.getElementById('btn-exp-b');
+            const expBtns = document.querySelectorAll('.exp-btn');
+            
+            function updateContent() {
+                const data = expData[currentExp];
+
+                document.getElementById('dur-text-zh').innerHTML = data.durZh;
+                document.getElementById('dur-text-en').innerHTML = data.durEn;
+                document.getElementById('reward-amount-zh').innerText = data.reward;
+                document.getElementById('reward-amount-en').innerText = data.reward;
+
+                const mailtoZh = `mailto:${emailAddress}?subject=${encodeURIComponent(data.subjectZh)}`;
+                const mailtoEn = `mailto:${emailAddress}?subject=${encodeURIComponent(data.subjectEn)}`;
+                document.getElementById('email-link-zh').href = mailtoZh;
+                document.getElementById('email-link-en').href = mailtoEn;
+
+                if (currentLang === 'zh') {
+                    btnExpA.innerText = "選項 A (HKD 150)";
+                    btnExpB.innerText = "選項 B (HKD 200)";
+                } else {
+                    btnExpA.innerText = "Option A (HKD 150)";
+                    btnExpB.innerText = "Option B (HKD 200)";
+                }
+            }
+
             toggleBtn.addEventListener('click', () => {
                 if (currentLang === 'zh') {
-                    contentZh.style.display = 'none';
-                    contentEn.style.display = 'block';
+                    document.getElementById('content-zh').style.display = 'none';
+                    document.getElementById('main-title-zh').style.display = 'none';
+                    document.getElementById('subtitle-zh').style.display = 'none';
+                    
+                    document.getElementById('content-en').style.display = 'block';
+                    document.getElementById('main-title-en').style.display = 'block';
+                    document.getElementById('subtitle-en').style.display = 'inline-block';
+                    
                     toggleBtn.textContent = '中文';
                     currentLang = 'en';
                 } else {
-                    contentZh.style.display = 'block';
-                    contentEn.style.display = 'none';
+                    document.getElementById('content-en').style.display = 'none';
+                    document.getElementById('main-title-en').style.display = 'none';
+                    document.getElementById('subtitle-en').style.display = 'none';
+                    
+                    document.getElementById('content-zh').style.display = 'block';
+                    document.getElementById('main-title-zh').style.display = 'block';
+                    document.getElementById('subtitle-zh').style.display = 'inline-block';
+                    
                     toggleBtn.textContent = 'English';
                     currentLang = 'zh';
                 }
+                updateContent();
             });
 
-            // 點擊複製電郵 (帶有視覺反饋)
-            document.querySelectorAll('.email-link').forEach(emailText => {
-                emailText.addEventListener('click', (e) => {
-                    e.preventDefault(); 
-                    const emailAddress = emailText.textContent;
-                    navigator.clipboard.writeText(emailAddress).then(() => {
-                        const originalText = emailText.textContent;
-                        emailText.textContent = currentLang === 'zh' ? "✅ 已複製 Email!" : "✅ Email Copied!";
-                        emailText.style.color = '#8E1537';
-                        
-                        setTimeout(() => {
-                            emailText.textContent = originalText;
-                            emailText.style.color = ''; 
-                        }, 2000);
-                    }).catch(() => {
-                        window.location.href = `mailto:${emailAddress}`; 
+            expBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    expBtns.forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    currentExp = e.target.getAttribute('data-exp');
+                    updateContent();
+                    
+                    const amounts = document.querySelectorAll('.reward-price');
+                    amounts.forEach(el => {
+                        el.style.transform = 'scale(1.1)';
+                        setTimeout(() => el.style.transform = 'scale(1)', 200);
                     });
                 });
             });
+
+            updateContent();
         });
     </script>
 </body>
